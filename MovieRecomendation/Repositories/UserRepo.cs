@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 
 namespace MovieRecomendation.Repositories
 {
+    /// <summary>
+    /// This class reads all users from txt file and saves them as a dictionary
+    /// </summary>
     public class UserRepo
     {
         public Dictionary<int,User> Users { get; set; }

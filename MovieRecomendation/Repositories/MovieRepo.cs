@@ -8,6 +8,9 @@ using System.Threading.Tasks;
 
 namespace MovieRecomendation.Repositories
 {
+    /// <summary>
+    /// This class reads txt file with all the movies and saves them in a dictionary
+    /// </summary>
     public class MovieRepo
     {
         public Dictionary<int,Movie> Movies { get; set; }

@@ -7,16 +7,15 @@ using System.Threading.Tasks;
 
 namespace MovieRecomendation.Repositories
 {
+    /// <summary>
+    /// This class is an aggregation of all movie metadata (basically moviestat repo)
+    /// </summary>
     public class MovieDashboard
-    {
-        private IEnumerable<MovieStat> _stats;
-
-        public List<MovieStat> Stats
-        {
-            get { return _stats.OrderByDescending(mov => mov.ViewCount).ThenBy(mov => mov.PurchaseRate).ToList(); }
-            set { _stats = value.ToList(); }
-        }
-
+    { 
+        /// <summary>
+        /// Stats when created are sorted by view count(high to low) and purchase rate (also high to low)
+        /// </summary>
+        public List<MovieStat> Stats{get;set;}
         public MovieDashboard()
         {
             List<int> allViewed = new List<int>();
@@ -53,6 +52,8 @@ namespace MovieRecomendation.Repositories
                     BuyCount = buy?.Count ?? 0
                 }
                 ).ToList();
+            //sorting logic is here
+            Stats = Stats.OrderByDescending(mov => mov.ViewCount).ThenByDescending(mov => mov.PurchaseRate).ToList();
                 ;
         }
     }
